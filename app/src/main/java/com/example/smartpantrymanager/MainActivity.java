@@ -37,6 +37,19 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, AddEditIngredientActivity.class);
             startActivity(intent);
         });
+
+        // TEMPORARY TEST FOR STRICT MATCHING
+        List<Recipe> allRecipes = dbHelper.getAllRecipes();
+        List<Ingredient> myPantry = dbHelper.getAllIngredients();
+
+        for (Recipe recipe : allRecipes) {
+            if (RecipeMatcher.canMakeRecipe(recipe, myPantry)) {
+                android.util.Log.d("RECIPE_TEST", "You can make: " + recipe.getName());
+            } else {
+                android.util.Log.d("RECIPE_TEST", "You CANNOT make: " + recipe.getName());
+            }
+        }
+
     }
 
     @Override

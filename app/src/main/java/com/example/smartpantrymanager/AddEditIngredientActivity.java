@@ -39,7 +39,7 @@ public class AddEditIngredientActivity extends AppCompatActivity{
         btnSaveIngredient = findViewById(R.id.btnSaveIngredient);
 
         // setting up the spinner as a unit dropdown
-        String[] units = {"pc(s)", "Kg(s)", "g(s)", "litre(s)", "ml(s)", "bunch(es)", "packet(s)"};
+        String[] units = {"pcs", "kg", "g", "litre", "ml", "bunch", "packet"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, units);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerUnit.setAdapter(adapter);
