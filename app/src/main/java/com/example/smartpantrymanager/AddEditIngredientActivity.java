@@ -69,41 +69,38 @@ public class AddEditIngredientActivity extends AppCompatActivity{
         });
 
         // handling the save button
-        btnSaveIngredient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // gets the text the user typed
-                String name = etName.getText().toString().trim();
-                String quantityStr = etQuantity.getText().toString().trim();
-                String unit = spinnerUnit.getSelectedItem().toString();
+        btnSaveIngredient.setOnClickListener(v -> {
+            // gets the text the user typed
+            String name = etName.getText().toString().trim();
+            String quantityStr = etQuantity.getText().toString().trim();
+            String unit = spinnerUnit.getSelectedItem().toString();
 
-                // input validation
-                if (name.isEmpty()) {
-                    etName.setError("Name of ingredient is required");
-                    etName.requestFocus(); // shows where the error happened
-                    return;
-                }
-                if (quantityStr.isEmpty()) {
-                    etQuantity.setError("Quantity is required");
-                    etQuantity.requestFocus();
-                    return;
-                }
+            // input validation
+            if (name.isEmpty()) {
+                etName.setError("Name of ingredient is required");
+                etName.requestFocus(); // shows where the error happened
+                return;
+            }
+            if (quantityStr.isEmpty()) {
+                etQuantity.setError("Quantity is required");
+                etQuantity.requestFocus();
+                return;
+            }
 
-                // convert the quantity to double e.g. 3.5 kg
-                double quantity = Double.parseDouble(quantityStr);
+            // convert the quantity to double e.g. 3.5 kg
+            double quantity = Double.parseDouble(quantityStr);
 
-                // Save to database
-                DatabaseHelper dbHelper = new DatabaseHelper(AddEditIngredientActivity.this);
-                Ingredient newIngredient = new Ingredient(0, name, quantity, unit, selectedExpiryDate);
+            // Save to database
+            DatabaseHelper dbHelper = new DatabaseHelper(AddEditIngredientActivity.this);
+            Ingredient newIngredient = new Ingredient(0, name, quantity, unit, selectedExpiryDate);
 
-                boolean success = dbHelper.addIngredient(newIngredient);
+            boolean success = dbHelper.addIngredient(newIngredient);
 
-                if (success) { // toast - small temporary popup message that alerts the user e.g. ingredient saved when saved to database
-                    Toast.makeText(AddEditIngredientActivity.this, "Ingredient Saved!", Toast.LENGTH_SHORT).show();
-                    finish(); // closes the screen and goes back to MainActivity
-                } else {
-                    Toast.makeText(AddEditIngredientActivity.this, "Error saving ingredient", Toast.LENGTH_SHORT).show();
-                }
+            if (success) { // toast - small temporary popup message that alerts the user e.g. ingredient saved when saved to database
+                Toast.makeText(AddEditIngredientActivity.this, "Ingredient Saved!", Toast.LENGTH_SHORT).show();
+                finish(); // closes the screen and goes back to MainActivity
+            } else {
+                Toast.makeText(AddEditIngredientActivity.this, "Error saving ingredient", Toast.LENGTH_SHORT).show();
             }
         });
     }

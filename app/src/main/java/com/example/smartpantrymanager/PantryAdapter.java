@@ -10,10 +10,17 @@ import java.util.List;
 public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.PantryViewHolder> {
 
     private List<Ingredient> ingredientList;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(Ingredient ingredient); // will be used for updating
+        void onItemLongClick(Ingredient ingredient); // will be used for deleting
+    }
 
     // constructor
-    public PantryAdapter(List<Ingredient> ingredientList) {
+    public PantryAdapter(List<Ingredient> ingredientList, OnItemClickListener listener) {
         this.ingredientList = ingredientList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -41,6 +48,22 @@ public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.PantryView
         } else {
             holder.tvExpiry.setText("");
         }
+
+        // setting click listeners
+        // setting click on ingredient
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(currentIngredient);
+            }
+        });
+
+        // setting long click on ingredient
+        holder.itemView.setOnLongClickListener(v -> {
+            if (listener != null) {
+                listener.onItemLongClick(currentIngredient);
+            }
+            return true; // returns tru for long click
+        });
     }
 
     @Override
