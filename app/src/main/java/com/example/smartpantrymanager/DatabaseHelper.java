@@ -89,6 +89,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
+    // Update - modify an existing ingredient
+    public boolean updateIngredient(Ingredient ingredient) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_NAME, ingredient.getName());
+        cv.put(COLUMN_QUANTITY, ingredient.getQuantity());
+        cv.put(COLUMN_UNIT, ingredient.getUnit());
+        cv.put(COLUMN_EXPIRY, ingredient.getExpiryDate());
+
+        // Update the row where the ID matches
+        int result = db.update(TABLE_PANTRY, cv, COLUMN_ID + " = ?", new String[]{String.valueOf(ingredient.getId())});
+        db.close();
+        return result > 0; // validation to confirm successful change to database, otherwise will return false
+    }
+
     // Delete - removing an ingredient
     public void deleteIngredient(int id) {
         SQLiteDatabase db = this.getWritableDatabase();

@@ -53,8 +53,10 @@ public class MainActivity extends AppCompatActivity {
         adapter = new PantryAdapter(pantryList, new PantryAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Ingredient ingredient) {
-                // adding a toast for now before the edit screen is built
-                Toast.makeText(MainActivity.this, "Clicked: " + ingredient.getName(), Toast.LENGTH_SHORT).show();
+                // opens the AddEdit screen, but passes the ingredient with it
+                Intent intent = new Intent(MainActivity.this, AddEditIngredientActivity.class);
+                intent.putExtra("EDIT_INGREDIENT", ingredient);
+                startActivity(intent);
             }
 
             @Override
