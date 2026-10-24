@@ -58,8 +58,10 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
 
         // setting up the adapter
         adapter = new RecipeAdapter(matchingRecipes, recipe -> {
-            // toasting for now until the recipe detail screen is built
-            android.widget.Toast.makeText(SuggestedRecipesActivity.this, "Clicked: " + recipe.getName(), android.widget.Toast.LENGTH_SHORT).show();
+            // opens the detail screen and passes the recipe
+            Intent intent = new Intent(SuggestedRecipesActivity.this, RecipeDetailActivity.class);
+            intent.putExtra("RECIPE_DETAIL", recipe);
+            startActivity(intent);
         });
         recyclerView.setAdapter(adapter);
     }
