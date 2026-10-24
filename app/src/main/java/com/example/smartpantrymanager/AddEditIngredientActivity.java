@@ -132,6 +132,7 @@ public class AddEditIngredientActivity extends AppCompatActivity{
                 existingIngredient.setUnit(unit);
                 existingIngredient.setExpiryDate(selectedExpiryDate);
 
+                Toast.makeText(AddEditIngredientActivity.this, "Ingredient updated", Toast.LENGTH_SHORT).show();
                 success = dbHelper.updateIngredient(existingIngredient);
 
             } else {

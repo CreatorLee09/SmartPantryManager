@@ -126,14 +126,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // insertSeedRecipes method
     private void insertSeedRecipes(SQLiteDatabase db) {
-        // Recipe 1: Scrambled eggs - ingredients: 3 eggs and 1 piece of butter
-        String recipe1Ingredients = "Eggs:3:pcs,Butter:1:pcs";
-        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Scrambled Eggs', 'Whisk eggs and cook low heat in butter for about 1 minute or until ready.', '" + recipe1Ingredients + "')");
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Scrambled Eggs', 'Whisk eggs and cook low heat in butter for about 1 minute or until ready.', 'Eggs:3:pcs,Butter:1:pcs')");
 
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Tomato Rice', 'Cook rice in a pot and mix with grated tomatoes.', 'Tomatoes:2:pcs,Rice:1:kg')");
 
-        // Recipe 2: Rice with tomato - ingredients: 2 Tomatoes and 1 kg of Rice
-        String recipe2Ingredients = "Tomatoes:2:pcs,Rice:1:kg";
-        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Tomato Rice', 'Cook rice in a pot and mix with grated tomatoes.', '" + recipe2Ingredients + "')");
+                db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Scrambled Eggs', 'Whisk eggs and cook low heat in butter for about 1 minute or until ready.', 'Eggs:3:pcs,Butter:1:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Tomato Rice', 'Cook rice in a pot and mix with grated tomatoes.', 'Tomatoes:2:pcs,Rice:1:kg')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Cheese Omelette', 'Beat eggs, pour into a pan, and sprinkle cheese on top. Fold and serve.', 'Eggs:2:pcs,Cheese:1:pcs,Butter:1:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Garlic Pasta', 'Boil pasta. Saute garlic in oil, mix with pasta, and serve.', 'Pasta:1:packet,Garlic:2:pcs,Oil:1:ml')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Tomato Soup', 'Boil tomatoes with garlic and blend until smooth.', 'Tomatoes:4:pcs,Garlic:1:pcs,Salt:1:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Peanut Butter Toast', 'Toast bread and spread peanut butter on it.', 'Bread:2:pcs,Peanut Butter:1:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('French Toast', 'Dip bread in beaten eggs and fry in butter until golden.', 'Bread:2:pcs,Eggs:2:pcs,Butter:1:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Chicken Salad', 'Mix chopped chicken, lettuce, and tomatoes with a dash of oil.', 'Chicken:1:kg,Lettuce:1:bunch,Tomatoes:2:pcs,Oil:1:ml')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Potato Wedges', 'Cut potatoes into wedges, coat in oil and salt, bake until crispy.', 'Potatoes:3:pcs,Oil:2:ml,Salt:1:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Banana Smoothie', 'Blend bananas and milk together until smooth.', 'Bananas:2:pcs,Milk:1:litre')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Butter Rice', 'Cook rice and stir in butter while hot.', 'Rice:1:kg,Butter:2:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Cheese Sandwich', 'Place cheese between two slices of bread.', 'Bread:2:pcs,Cheese:2:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Boiled Eggs', 'Boil eggs in water for 10 minutes.', 'Eggs:2:pcs')");
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Chicken and Rice', 'Cook chicken in a pan and serve with boiled rice.', 'Chicken:1:kg,Rice:1:kg,Oil:1:ml')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Tomato Sandwich', 'Slice tomatoes and place between two slices of bread.', 'Tomatoes:1:pcs,Bread:2:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Mashed Potatoes', 'Boil potatoes, mash them, and mix with butter and milk.', 'Potatoes:3:pcs,Butter:1:pcs,Milk:1:ml')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Garlic Bread', 'Spread crushed garlic and butter on bread, then bake.', 'Bread:2:pcs,Garlic:2:pcs,Butter:1:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Apple Slices with Peanut Butter', 'Slice an apple and dip it in peanut butter.', 'Apples:1:pcs,Peanut Butter:1:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Pasta with Tomato', 'Boil pasta and mix with tomato sauce.', 'Pasta:1:packet,Tomatoes:2:pcs')");
+
+        db.execSQL("INSERT INTO recipes (name, instructions, required_ingredients_json) VALUES ('Chicken Omelette', 'Cook chopped chicken in a pan with eggs.', 'Chicken:1:pcs,Eggs:2:pcs,Oil:1:ml')");
     }
 
     // method to fetch all recipes from the database

@@ -39,18 +39,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // TEMPORARY TEST FOR STRICT MATCHING
-        List<Recipe> allRecipes = dbHelper.getAllRecipes();
-        List<Ingredient> myPantry = dbHelper.getAllIngredients();
-
-        for (Recipe recipe : allRecipes) {
-            if (RecipeMatcher.canMakeRecipe(recipe, myPantry)) {
-                android.util.Log.d("RECIPE_TEST", "You can make: " + recipe.getName());
-            } else {
-                android.util.Log.d("RECIPE_TEST", "You CANNOT make: " + recipe.getName());
-            }
-        }
-
         // bottom navigation setup
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
         bottomNav.setOnItemSelectedListener(item -> {
@@ -101,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
                             // refreshes the list
                             loadPantryData();
-                            Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Ingredient Deleted", Toast.LENGTH_SHORT).show();
                         })
                         .setNegativeButton("Cancel", null)
                         .show();
