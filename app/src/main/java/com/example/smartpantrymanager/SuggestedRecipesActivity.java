@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +25,24 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggested_recipes);
+
+        // bottom navigation setup
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
+        bottomNav.setSelectedItemId(R.id.nav_recipes);
+
+        bottomNav.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_pantry)  {
+                startActivity(new android.content.Intent(SuggestedRecipesActivity.this, MainActivity.class));
+                finish(); // Closes the main (pantry) screen
+                return true;
+            } else if (itemId == R.id.nav_settings) {
+                startActivity(new android.content.Intent(SuggestedRecipesActivity.this, SettingsActivity.class));
+                finish(); // Closes the settings screen
+                return true;
+            }
+            return false;
+        });
 
         dbHelper = new DatabaseHelper(this);
         recyclerView = findViewById(R.id.recyclerViewRecipes);

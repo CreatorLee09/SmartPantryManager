@@ -57,8 +57,11 @@ public class MainActivity extends AppCompatActivity {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_recipes) {
                 startActivity(new Intent(MainActivity.this, SuggestedRecipesActivity.class));
+                finish(); // closes the recipes screen
                 return true;
             } else if (itemId == R.id.nav_settings) { // this will open the settings screen
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                finish(); // closes the settings screen
                 return true;
             }
             return false;
