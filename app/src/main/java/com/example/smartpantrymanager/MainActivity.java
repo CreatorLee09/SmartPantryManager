@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AlertDialog.Builder;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -49,6 +50,19 @@ public class MainActivity extends AppCompatActivity {
                 android.util.Log.d("RECIPE_TEST", "You CANNOT make: " + recipe.getName());
             }
         }
+
+        // bottom navigation setup
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
+        bottomNav.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_recipes) {
+                startActivity(new Intent(MainActivity.this, SuggestedRecipesActivity.class));
+                return true;
+            } else if (itemId == R.id.nav_settings) { // this will open the settings screen
+                return true;
+            }
+            return false;
+        });
 
     }
 
